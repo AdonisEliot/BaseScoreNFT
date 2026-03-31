@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { Attribution } from "ox/erc8021";
 import { parseEventLogs } from "viem";
 import { usePublicClient, useWriteContract } from "wagmi";
 import { baseScoreNFTAbi } from "@/lib/abi/baseScoreNFTAbi";
@@ -13,11 +12,10 @@ export type ClaimTrackedResult = {
   tokenId?: bigint;
 };
 
-// Replace with real Builder Code in production release.
-// BUILDER_CODE_PLACEHOLDER
-export const DATA_SUFFIX = Attribution.toDataSuffix({
-  codes: ["BUILDER_CODE_PLACEHOLDER"],
-});
+// Builder Code: bc_hk71kxgc
+// Encoded data suffix for ERC-8021 attribution:
+export const DATA_SUFFIX =
+  "0x62635f686b37316b7867630b0080218021802180218021802180218021";
 
 export function useTrackedClaim(address?: `0x${string}`) {
   const [isClaiming, setIsClaiming] = useState(false);
@@ -74,4 +72,3 @@ export function useTrackedClaim(address?: `0x${string}`) {
 
   return { claimTracked, isClaiming };
 }
-
